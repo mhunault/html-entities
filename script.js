@@ -1,4 +1,4 @@
-const collection = {
+let collection = {
     "arrows": [
         {
             "name": "left arrow",
@@ -17314,7 +17314,9 @@ const collection = {
 };
 
 
+
 var root = document.getElementById('root');
+const entitiesQte = document.getElementById('entitiesQte');
 
 
 let allEntities = [];
@@ -17329,7 +17331,7 @@ function encodeHTMLEntities(text) {
 }
 
 
-
+let i = 0;
 
 allEntities.forEach(element => root.insertAdjacentHTML('beforebegin', `
     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -17340,8 +17342,11 @@ allEntities.forEach(element => root.insertAdjacentHTML('beforebegin', `
         <td class="px-6 py-4">${encodeHTMLEntities(element.dec)}</td>
         <td class="px-6 py-4">${encodeHTMLEntities(element.entity)}</td>
         <td class="px-6 py-4">${encodeHTMLEntities(element.css)}</td>
-    </tr>`
+    </tr>`,
+    i++
 ));
+
+entitiesQte.innerHTML = i.toString() + ' entities';
 
 document.getElementById('search').addEventListener('input', function() {
     var searchField = document.getElementById('search');
