@@ -17315,10 +17315,33 @@ const JSON = {
 
 
 var root = document.getElementById('root');
-const ARROWS = JSON.arrows;
-ARROWS.forEach(element => root.insertAdjacentHTML('beforebegin', `<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"><td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">${element.name}</td><td class="px-6 py-4">${element.character}</td><td class="px-6 py-4">${element.unicode}</td><td class="px-6 py-4">${element.hex}</td><td class="px-6 py-4">${element.dec}</td><td class="px-6 py-4">${element.entity}</td><td class="px-6 py-4">${element.css}</td></tr>`));
 
 
+let allEntities = [];
+for(let key in collection) {
+    allEntities = allEntities.concat(collection[key]);
+}
+
+function encodeHTMLEntities(text) {
+    var textArea = document.createElement('textarea');
+    textArea.innerText = text;
+    return textArea.innerHTML;
+}
+
+
+
+
+allEntities.forEach(element => root.insertAdjacentHTML('beforebegin', `
+    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">${element.character}</td>
+        <td class="px-6 py-4">${element.name}</td>
+        <td class="px-6 py-4">${encodeHTMLEntities(element.unicode)}</td>
+        <td class="px-6 py-4">${encodeHTMLEntities(element.hex)}</td>
+        <td class="px-6 py-4">${encodeHTMLEntities(element.dec)}</td>
+        <td class="px-6 py-4">${encodeHTMLEntities(element.entity)}</td>
+        <td class="px-6 py-4">${encodeHTMLEntities(element.css)}</td>
+    </tr>`
+));
 
 document.getElementById('search').addEventListener('input', function() {
     var searchField = document.getElementById('search');
@@ -17327,10 +17350,9 @@ document.getElementById('search').addEventListener('input', function() {
     filter = searchField.value.toUpperCase();
     table = document.getElementById("charactersTable");
     tr = table.getElementsByTagName("tr");
-
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
+        td = tr[i].getElementsByTagName("td")[1];
         if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
