@@ -1,4 +1,4 @@
-const JSON = {
+const collection = {
     "arrows": [
         {
             "name": "left arrow",
