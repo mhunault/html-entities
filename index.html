@@ -1,18 +1,21 @@
 <!doctype html>
-<html>
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Hisuko">
-   
-    <meta name="description" content="A simple list of all HTML entities (Unicode, HEX, DEC, ENTITY, CSS) with search field.">
-    <title>List of HTML entities</title>   
-    <link href="./output.css" rel="stylesheet">
+    <meta name="description" content="List of all HTML entities with search field.">
+    <meta property="og:image" content="./banner.png" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link href="../dist/output.css" rel="stylesheet">
+    <title>List of HTML entities</title>
 </head>
 <body>
-
 <div class="container mx-auto">
-    <h1 class="text-4xl font-extrabold dark:text-white my-5">HTML Entities - Arrows</h1>
+    <div class="my-5">
+        <h1 class="text-4xl font-extrabold dark:text-white">HTML Entities</h1>
+        <p id="entitiesQte" class="italic text-slate-500 font-normal"></p>
+    </div>
+
     <div class="relative overflow-x-auto">
         <div class="relative w-full my-5">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -52,8 +55,12 @@
         </table>
     </div>
 </div>
-
-
+<footer class="mt-5">
+    <div class="flex bg-gray-50 text-xs text-gray-700 py-3 justify-center">
+        <p class="mx-3">Used datas based on <a href="https://ourcodeworld.com/articles/read/1576/list-of-html-entities-in-json-format" class="font-bold">ourcodeworld.com</a></p>
+        <a class="font-bold mx-3" target="_blank" href="https://github.com/mhunault/html-entities">Repository</a>
+    </div>
+</footer>
 <script src="./script.js"></script>
 </body>
 </html>
